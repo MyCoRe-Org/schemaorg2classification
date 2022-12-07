@@ -2,9 +2,11 @@
 
 This mini project attempts to finagle the official [Vocabulary Definition Files](https://schema.org/docs/developers.html#defs) for the latest Schema.org [vocabulary](https://schema.org/version/latest) into a usable MyCoRe classification. 
 
-Running `build.sh` should be enough to perform the transformation.
-Deleting the source files (`schemaorg-all-http.rdf`, `schemaorg-current-http.rdf`) should trigger downloading of the latest version of these files.
+Running **`./build.sh`** should be enough to perform the transformation.
+Deleting the source files (`schemaorg-all-http.rdf`, `schemaorg-current-http.rdf`, `schemaorg-version.txt`) should trigger downloading of the latest version of these files.
 This assumes, that the Schema.org website isn't changed.
+
+Running **`./clean.sh`** removes all files created by the build script.
 
 Some points:
 
@@ -15,9 +17,12 @@ Some points:
   It uses the second file to determine whether an entry is still considered part of the vocabulary.
   Sadly, it is not possible to determine this using the first file alone.
   Entries that are not current are marked with `<label xml:lang="x-disable" text="true"/>`
-- A current version (release 15.0) of the source files and the corresponding output file (`schemaOrg.xml`) are included in this project.
+- A current release (version 15.0) of the source files and the corresponding output file (`schemaOrg.xml`) are included in this project.
   This allows to run the transformation, even if the Schema.org website is down.
   It also allows to determine the indented behaviour of this project, should the construction of the Schema.org vocabulary change in the future.  
+- The source files do not contain the version number of the current release.
+  The version is scraped from the Schema.org website and cached in `schemaorg-version.txt`.
+  The version and the current date are included in the output file.
 - The Schema.org vocabulary is a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
   Some entries have two or more parents.
   MyCoRe classifications need to be a tree.
