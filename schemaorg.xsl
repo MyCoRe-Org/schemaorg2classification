@@ -21,6 +21,7 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <label xml:lang="de" text="schema.org" />
       <label xml:lang="en" text="schema.org" />
+      <label xml:lang="x-build" text="{$version}, {$date}" />
       <label xml:lang="x-source" text="https://github.com/MyCoRe-Org/schemaorg2classification" />
       <label xml:lang="x-uri" text="{$baseUri}" />
       <categories>
